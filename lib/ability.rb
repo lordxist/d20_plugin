@@ -58,9 +58,11 @@ module Ability
   def self.planned_generation_is_valid?(assignment)
     score_points = SCORE_POINTS
     [:str, :dex, :con, :int, :wis, :cha].each do |a|
-      score_points -= SCORE_COSTS[assignment[a]] if assignment &&
-        assignment[a]
-      return false if score_points < 0
+      if assignment && assignment[a]
+        assignment[a] = 10 if assignment[a] > 10
+        score_points -= SCORE_COSTS[assignment[a]]
+        return false if score_points < 0
+      end
     end
     score_points
   end
