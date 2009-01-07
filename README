@@ -1,0 +1,16 @@
+D20
+===
+
+This plugin provides modules and classes for use in d20-like roleplaying
+games. It includes basic ability, species and class functionality for
+characters, and the archetype class which serves as a template for specific gm
+characters. Additionally, a facility for rolling dice is included.
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2009 Julian Jabs, released under the MIT license
