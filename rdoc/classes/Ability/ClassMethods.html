@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Ability::ClassMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Ability::ClassMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/ability_rb.html">
+                lib/ability.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000007">create_with_planned_generation</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">create_with_planned_generation</span><span class="method-args">(attributes = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds the planned generation of ability scores to the basic create method of
+<a href="../GameCharacter.html">GameCharacter</a>. To create a character
+with this method, assume a basic score of 8 for each score, and increase
+the scores you want to.
+</p>
+<p>
+Example:
+</p>
+<p>
+<tt>GameCharacter.create(:str =&gt; 9, :dex =&gt; 8)</tt>
+</p>
+<p>
+Spending more than the total amount of score points will result in
+returning nil.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ability.rb, line 64</span>
+64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_with_planned_generation</span>(<span class="ruby-identifier">attributes</span> = <span class="ruby-keyword kw">nil</span>)
+65:       <span class="ruby-identifier">new_attributes</span> = {}
+66:       <span class="ruby-identifier">score_points</span> = <span class="ruby-constant">SCORE_POINTS</span>
+67:       [<span class="ruby-identifier">:str</span>, <span class="ruby-identifier">:dex</span>, <span class="ruby-identifier">:con</span>, <span class="ruby-identifier">:int</span>, <span class="ruby-identifier">:wis</span>, <span class="ruby-identifier">:cha</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+68:         <span class="ruby-identifier">new_attributes</span>[<span class="ruby-identifier">a</span>] = <span class="ruby-value">8</span>
+69:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attributes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">a</span>]
+70:           <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">a</span>] = <span class="ruby-value">10</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>
+71:           <span class="ruby-identifier">new_attributes</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">a</span>]
+72:           <span class="ruby-identifier">score_points</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">SCORE_COSTS</span>[<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">a</span>]]
+73:         <span class="ruby-keyword kw">end</span>
+74:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">score_points</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+75:       <span class="ruby-keyword kw">end</span>
+76:       <span class="ruby-identifier">create_without_planned_generation</span>(<span class="ruby-identifier">new_attributes</span>)
+77:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: username
+  :password: password
+  :database: d20_plugin_test
