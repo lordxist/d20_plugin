@@ -4,42 +4,42 @@ module D20
       def d20
         result = 0
         self.times do |n|
-          result + rand(20) + 1
+          result += rand(20) + 1
         end
       end
 
       def d4
         result = 0
           self.times do |n|
-          result + rand(4) + 1
+          result += rand(4) + 1
         end
       end
 
       def d6
         result = 0
         self.times do |n|
-          result + rand(6) + 1
+          result += rand(6) + 1
         end
       end
 
       def d8
         result = 0
         self.times do |n|
-          result + rand(8) + 1
+          result += rand(8) + 1
         end
       end
 
       def d10
         result = 0
         self.times do |n|
-          result + rand(10) + 1
+          result += rand(10) + 1
         end
       end
 
       def d12
         result = 0
         self.times do |n|
-          result + rand(12) + 1
+          result += rand(12) + 1
         end
       end
     end
