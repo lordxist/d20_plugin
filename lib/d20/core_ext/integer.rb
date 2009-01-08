@@ -6,6 +6,7 @@ module D20
         self.times do |n|
           result += rand(20) + 1
         end
+        result
       end
 
       def d4
@@ -13,6 +14,7 @@ module D20
           self.times do |n|
           result += rand(4) + 1
         end
+        result
       end
 
       def d6
@@ -20,6 +22,7 @@ module D20
         self.times do |n|
           result += rand(6) + 1
         end
+        result
       end
 
       def d8
@@ -27,6 +30,7 @@ module D20
         self.times do |n|
           result += rand(8) + 1
         end
+        result
       end
 
       def d10
@@ -41,6 +45,7 @@ module D20
         self.times do |n|
           result += rand(12) + 1
         end
+        result
       end
     end
   end
