@@ -9,8 +9,8 @@ module D20
   # Returns a number between zero and 100.
   #
   def self.d_percent
-    one_digits = 1.d10
-    ten_digits = 1.d10
+    one_digits = rand(10)
+    ten_digits = rand(10)
     return 100 if one_digits == 0 && ten_digits == 0
     return 10 * ten_digits + one_digits
   end
