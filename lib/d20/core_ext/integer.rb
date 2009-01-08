@@ -38,6 +38,7 @@ module D20
         self.times do |n|
           result += rand(10) + 1
         end
+        result
       end
 
       def d12
