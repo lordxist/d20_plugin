@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.author = 'lordxist'
   s.date     = Time.now
   s.summary = 'd20 roleplaying game plugin for Ruby on Rails'
-  s.version = '0.0.2'
+  s.version = '0.0.1'
   s.files = ["MIT-LICENSE",
              "README",
              "Rakefile",

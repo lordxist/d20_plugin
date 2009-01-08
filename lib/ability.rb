@@ -27,12 +27,6 @@ module Ability
     calc_modifier(cha)
   end
 
-  private
-  def calc_modifier(score)
-    score -= 1 if !(score / 2).is_a? Integer
-	score / 2 - 5
-  end
-
   # The total amount of score points, used by Planned Generation
   #
   SCORE_POINTS = 25
@@ -65,5 +59,11 @@ module Ability
       end
     end
     score_points
+  end
+
+  private
+  def calc_modifier(score)
+    score -= 1 if !(score / 2).is_a? Integer
+	score / 2 - 5
   end
 end
