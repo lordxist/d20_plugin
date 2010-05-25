@@ -1,5 +1,5 @@
-require 'ability/core_ext/integer'
-require 'ability/planned_generation'
+require 'd20/ability/core_ext/integer'
+require 'd20/ability/planned_generation'
 module D20
   # Provides methods to determine the modifier for each ability score.
   # Examples:
