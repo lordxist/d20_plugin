@@ -21,10 +21,12 @@ module D20
     # are as follows (incremented at each score increase): 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16.
     # They can be changed using the options hash:
     #
-    # <code>PlannedGeneration.new({ :str => 10, :dex => 8 }, :options => {
-    #     :score_points => 30,
-    #     :score_costs => [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 16]
-    #    }).valid?
+    # <code>
+    # options = {
+    #   :score_points => 30,
+    #   :score_costs => [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 16]
+    # }
+    # PlannedGeneration.new({ :str => 10, :dex => 8 }, options).valid?
     # </code>
     #
     # The score costs array must have at least 10 indexes. Planned Generation is only using
