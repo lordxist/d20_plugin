@@ -7,27 +7,24 @@ module D20
     # This returns true and retrieves the remaining score points:
     #
     # <code>
-    # planned_generation = PlannedGeneration.new(:assignment => [9, 8])
+    # planned_generation = PlannedGeneration.new([9, 8])
     # planned_generation.valid?
     # planned_generation.remaining_score_points
     # </code>
     #
     # And this returns false:
     #
-    # <code>PlannedGeneration.new(:assignment => [10, 8]).valid?</code>
+    # <code>PlannedGeneration.new([10, 8]).valid?</code>
     #
     # You can alternatively use a hash for the assignment, whose values will then be used.
     # The default value for the score points is 25 and the default values for the score costs
     # are as follows (incremented at each score increase): 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16.
     # They can be changed using the options hash:
     #
-    # <code>PlannedGeneration.new(
-    #   :assignment => { :str => 10, :dex => 8 },
-    #   :options => {
+    # <code>PlannedGeneration.new({ :str => 10, :dex => 8 }, :options => {
     #     :score_points => 30,
     #     :score_costs => [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 16]
-    #    }
-    # ).valid?
+    #    }).valid?
     # </code>
     #
     # The score costs array must have at least 10 indexes. Planned Generation is only using
@@ -36,11 +33,10 @@ module D20
     class PlannedGeneration
       attr_reader :assignment
 
-      def initialize(assignment_and_options = {})
-        @assignment = assignment_and_options[:assignment]
+      def initialize(assignment, options = {})
+        @assignment = assignment
         @assignment = @assignment.values if @assignment.is_a?(Hash)
 
-        options = assignment_and_options[:options] || {}
         options.merge!(
           :score_points => 25,
           :score_costs => [0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16]
